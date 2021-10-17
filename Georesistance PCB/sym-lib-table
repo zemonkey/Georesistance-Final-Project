@@ -1,0 +1,8 @@
+(sym_lib_table
+  (lib (name MMBF4117)(type Legacy)(uri "C:/Users/Rumah/Downloads/Trans_ON Semi_MMBF4117/eec.lib")(options "")(descr ""))
+  (lib (name ADS1115)(type Legacy)(uri "C:/Users/Rumah/Downloads/IC_Texas Instruments_ADS1115IDGSR/eec.lib")(options "")(descr ""))
+  (lib (name LM2776)(type Legacy)(uri C:/Users/Rumah/Downloads/LM2776DBVR/LM2776DBVR.lib)(options "")(descr ""))
+  (lib (name LTC6915)(type Legacy)(uri C:/Users/Rumah/Downloads/ul_LTC6915HGN-TRPBF/KiCAD/2021-09-13_01-04-12/2021-09-13_01-04-12.lib)(options "")(descr ""))
+  (lib (name NVT2008PW)(type Legacy)(uri C:/Users/Rumah/Downloads/ul_NVT2008PW-118/KiCAD/2021-09-21_11-57-39/2021-09-21_11-57-39.lib)(options "")(descr ""))
+  (lib (name RS0108)(type Legacy)(uri C:/Users/Rumah/Downloads/TXS0108EPWR/TXS0108EPWR.lib)(options "")(descr ""))
+)
