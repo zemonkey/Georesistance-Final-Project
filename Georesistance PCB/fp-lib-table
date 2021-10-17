@@ -5,4 +5,5 @@
   (lib (name LTC6915)(type KiCad)(uri C:/Users/Rumah/Downloads/ul_LTC6915HGN-TRPBF/KiCAD/2021-09-13_01-04-12/footprints.pretty)(options "")(descr ""))
   (lib (name NVT2008PW)(type KiCad)(uri C:/Users/Rumah/Downloads/ul_NVT2008PW-118/KiCAD/2021-09-21_11-57-39/footprints.pretty)(options "")(descr ""))
   (lib (name RS0108)(type KiCad)(uri C:/Users/Rumah/Downloads/TXS0108EPWR)(options "")(descr ""))
+  (lib (name PMN30ENEAX)(type KiCad)(uri "C:/Users/Rumah/Documents/GitHub/Georesistance-Final-Project/Georesistance PCB/Lib/TSOP-6 N-MOS/footprints.pretty")(options "")(descr ""))
 )
