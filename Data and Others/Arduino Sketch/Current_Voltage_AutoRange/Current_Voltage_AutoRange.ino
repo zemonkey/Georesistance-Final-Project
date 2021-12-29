@@ -138,7 +138,7 @@ float adc_6R2_to_mA(float adc_reading, int adc_gain) {
     current_mA = 0.0;
   }
   if (debug) Serial.println(current_mA);
-  return current_mA;
+  return current_mA/2;
 }
 
 float adc_R40_to_mA(float adc_reading, int adc_gain) {
@@ -150,7 +150,7 @@ float adc_R40_to_mA(float adc_reading, int adc_gain) {
     current_mA = 0.0;
   }
   if (debug) Serial.println(current_mA);
-  return current_mA;
+  return current_mA/2;
 }
 
 float current_6R2_auto_range() {
@@ -201,14 +201,13 @@ float current_6R2_auto_range() {
 
 float current_R40_auto_range() {
   int32_t i_data = 0;
-  const int total_sample = 10;
+  const int total_sample = 20;
   float i_mA;
   if (debug) Serial.println("using R40 auto-range");
   //reset gain
   set_gain(2);
   for (int i = 0; i < total_sample; i++) {
     i_data += adc_read_current();
-    delay(1000);
   }
   float average_reading = float(i_data) / float(total_sample);
   i_mA = adc_R40_to_mA(average_reading, adc_gain_var);
@@ -217,7 +216,6 @@ float current_R40_auto_range() {
     set_gain(3);
     for (int i = 0; i < total_sample; i++) {
       i_data += adc_read_current();
-      delay(1000);
     }
     float average_reading = float(i_data) / float(total_sample);
     i_mA = adc_R40_to_mA(average_reading, adc_gain_var);
@@ -227,7 +225,6 @@ float current_R40_auto_range() {
     set_gain(4);
     for (int i = 0; i < total_sample; i++) {
       i_data += adc_read_current();
-      delay(1000);
     }
     float average_reading = float(i_data) / float(total_sample);
     i_mA = adc_R40_to_mA(average_reading, adc_gain_var);
@@ -251,7 +248,7 @@ float read_current() {
 
 //VOLTAGE PART
 float adc_to_V(float adc_reading, int adc_gain) {
-  return (m_V[adc_gain] * adc_reading + b_V[adc_gain]) / 1000;
+  return (m_V[adc_gain] * adc_reading + b_V[adc_gain])/2;
 }
 
 float voltage_auto_range() {
@@ -319,7 +316,7 @@ float read_voltage() {
 }
 
 float adc_to_Vs(float adc_reading, int adc_gain) {
-  return (m_Vs[adc_gain] * adc_reading + b_Vs);
+  return (m_Vs[adc_gain] * adc_reading*1000 + b_Vs)/2;
 }
 
 float voltage_supply_auto_range() {
