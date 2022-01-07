@@ -39,37 +39,35 @@ int ADC_Config = 0xFFFA;
 //seems terrible with no benefit
 //int ADC_Config = 0xFFFF;
 
-int Shunt_Val = 10;
-
-TwoWire I2Ctwo = TwoWire(PB11,PB10);
+int Shunt_Val = 150;
 
 //Write into a 2 bytes (16 bits) register
 void write_16b_register(int Reg_Addr, int Data) {
   //Divide the Data per byte
   int LSB_Data= Data & 0xFF;
   int MSB_Data= Data >> 8;
-  I2Ctwo.beginTransmission(INA228_Addr);
-  I2Ctwo.write(byte(Reg_Addr));
+  Wire.beginTransmission(INA228_Addr);
+  Wire.write(byte(Reg_Addr));
 
   //Wire.write works by transferring the register data, byte per byte. from the Most significant one
-  I2Ctwo.write(byte(MSB_Data));
-  I2Ctwo.write(byte(LSB_Data));
+  Wire.write(byte(MSB_Data));
+  Wire.write(byte(LSB_Data));
         
-  I2Ctwo.endTransmission();
+  Wire.endTransmission();
 }
 
 //Set Current register
 void set_register(int Reg_Addr) {
-  I2Ctwo.beginTransmission(INA228_Addr);
-  I2Ctwo.write(byte(Reg_Addr));   
-  I2Ctwo.endTransmission();
+  Wire.beginTransmission(INA228_Addr);
+  Wire.write(byte(Reg_Addr));   
+  Wire.endTransmission();
 }
 
 //Read from a 20 bits MSB Register
 int read_20b_register(int Reg_Addr) {
   set_register(Reg_Addr);
-  I2Ctwo.requestFrom(INA228_Addr, 3);
-  if (3 <= I2Ctwo.available()) {
+  Wire.requestFrom(INA228_Addr, 3);
+  if (3 <= Wire.available()) {
     int value = Wire.read();
     value = value << 8;
     value |= Wire.read();
@@ -82,8 +80,8 @@ int read_20b_register(int Reg_Addr) {
 //Read from a 16 bits MSB Register
 int read_16b_register(int Reg_Addr) {
   set_register(Reg_Addr);
-  I2Ctwo.requestFrom(INA228_Addr, 2);
-  if (2 <= I2Ctwo.available()) {
+  Wire.requestFrom(INA228_Addr, 2);
+  if (2 <= Wire.available()) {
     int value = Wire.read();
     value = value << 8;
     value |= Wire.read();
@@ -113,13 +111,15 @@ void reset_INA228(){
 }
 
 void setup() {
-  I2Ctwo.begin();
+  Wire.setSDA(PB11);
+  Wire.setSCL(PB10);
+  Wire.begin();
   //Wire.begin(17,16);
   delay(1000);
-  Serial.begin(115200);
+  Serial.begin(8600);
   Check_Device();
   reset_INA228();
-  Wire.begin(17,16);
+  //Wire.begin(17,16);
   //lcd.init();                      // initialize the lcd 
   // Print a message to the LCD.
   //lcd.backlight();

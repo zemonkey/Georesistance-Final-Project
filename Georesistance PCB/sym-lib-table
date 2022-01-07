@@ -5,4 +5,5 @@
   (lib (name LTC6915)(type Legacy)(uri C:/Users/Rumah/Downloads/ul_LTC6915HGN-TRPBF/KiCAD/2021-09-13_01-04-12/2021-09-13_01-04-12.lib)(options "")(descr ""))
   (lib (name RS0108)(type Legacy)(uri C:/Users/Rumah/Downloads/TXS0108EPWR/TXS0108EPWR.lib)(options "")(descr ""))
   (lib (name PMN30ENEAX)(type Legacy)(uri C:/Users/Rumah/Downloads/ul_PMN30ENEAX/KiCAD/2021-10-17_09-51-41/2021-10-17_09-51-41.lib)(options "")(descr ""))
+  (lib (name Georesistance-PCB-rescue)(type Legacy)(uri "${KIPRJMOD}/Georesistance PCB-rescue.lib")(options "")(descr ""))
 )

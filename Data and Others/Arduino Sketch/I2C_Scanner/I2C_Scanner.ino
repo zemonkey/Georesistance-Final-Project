@@ -32,8 +32,8 @@
  
 void setup()
 {
-  Wire.setSDA(PB9);
-  Wire.setSCL(PB8);
+  Wire.setSDA(PB11);
+  Wire.setSCL(PB10);
   Wire.begin();
  
   Serial.begin(9600);
